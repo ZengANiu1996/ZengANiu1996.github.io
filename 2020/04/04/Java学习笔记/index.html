@@ -25,7 +25,7 @@
   <link rel="stylesheet" type="text/css" href="/./style/main.css">
 	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>Hello World</title>
+	<title>Mysql学习笔记</title>
   
   <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
   </script>
@@ -48,7 +48,7 @@
     
   
   <h1 class="title">
-    Hello World
+    Mysql学习笔记
   </h1>
   
 
@@ -56,11 +56,11 @@
     <ul class="article-info">
       <li>
         发布
-        <time datetime="2020-04-02T14:22:58.259Z" itemprop="datePublished">2020-04-02</time>
+        <time datetime="2020-04-04T05:05:01.000Z" itemprop="datePublished">2020-04-04</time>
       </li>
       <li>
         
-    更新 <time datetime="2020-04-02T14:22:58.259Z" itemprop="dateUpdated">2020-04-02</time>
+    更新 <time datetime="2020-04-04T05:15:43.760Z" itemprop="dateUpdated">2020-04-04</time>
 
       </li>
       <li id="busuanzi_container_page_pv">
@@ -72,20 +72,64 @@
     <div class="article">
       <div class="content">
         
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="数据库的基本概念"><a href="#数据库的基本概念" class="headerlink" title="数据库的基本概念"></a>数据库的基本概念</h2><pre><code>1. 数据库的英文单词： DataBase 简称 ： DB
+2. 什么数据库？
+    * 用于存储和管理数据的仓库。
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+3. 数据库的特点：
+    1. 持久化存储数据的。其实数据库就是一个文件系统
+    2. 方便存储和管理数据
+    3. 使用了统一的方式操作数据库 -- SQL</code></pre><h1 id="MySQL数据库软件"><a href="#MySQL数据库软件" class="headerlink" title="MySQL数据库软件"></a>MySQL数据库软件</h1><pre><code>1. 安装
+    * 参考百度
+2. 卸载
+    1. 去mysql的安装目录找到my.ini文件
+        * 复制 datadir=&quot;C:/ProgramData/MySQL/MySQL Server 5.5/Data/&quot;
+    2. 卸载MySQL
+    3. 删除C:/ProgramData目录下的MySQL文件夹。
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+3. 配置
+    * MySQL服务启动
+        1. 手动。
+        2. cmd--&gt; services.msc 打开服务的窗口
+        3. 使用管理员打开cmd
+            * net start mysql : 启动mysql的服务
+            * net stop mysql:关闭mysql服务
+    * MySQL登录
+        1. mysql -uroot -p密码
+        2. mysql -hip -uroot -p连接目标的密码
+        3. mysql --host=ip --user=root --password=连接目标的密码
+    * MySQL退出
+        1. exit
+        2. quit
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+    * MySQL目录结构
+        1. MySQL安装目录：basedir=&quot;D:/develop/MySQL/&quot;
+            * 配置文件 my.ini
+        2. MySQL数据目录：datadir=&quot;C:/ProgramData/MySQL/MySQL Server 5.5/Data/&quot;
+            * 几个概念
+                * 数据库：文件夹
+                * 表：文件
+                * 数据：数据</code></pre><h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><pre><code>1.什么是SQL？
+    Structured Query Language：结构化查询语言
+    其实就是定义了操作所有关系型数据库的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+2.SQL通用语法
+    1. SQL 语句可以单行或多行书写，以分号结尾。
+    2. 可使用空格和缩进来增强语句的可读性。
+    3. MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。
+    4. 3 种注释
+        * 单行注释: -- 注释内容 或 # 注释内容(mysql 特有) 
+        * 多行注释: /* 注释 */
 
+3. SQL分类
+    1) DDL(Data Definition Language)数据定义语言
+        用来定义数据库对象：数据库，表，列等。关键字：create, drop,alter 等
+    2) DML(Data Manipulation Language)数据操作语言
+        用来对数据库中表的数据进行增删改。关键字：insert, delete, update 等
+    3) DQL(Data Query Language)数据查询语言
+        用来查询数据库中表的记录(数据)。关键字：select, where 等
+    4) DCL(Data Control Language)数据控制语言(了解)
+        用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT， REVOKE 等</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a></h2>
       </div>
         <div class="support-author">
           <p>感谢您的阅读。 🙏
